@@ -40,6 +40,8 @@ services:
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
+    depends_on:
+      - mariadb
     restart: always
 
 volumes:

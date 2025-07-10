@@ -1,0 +1,27 @@
+NAME				=	inception
+
+DOCKER_COMPOSE_CMD	=	docker compose
+DOCKER_COMPOSE_PATH	=	srcs/docker-compose.yml
+
+all:
+	@if [ -f "./srcs/.env" ]; then \
+		mkdir -p /home/milan/data/mariadb; \
+		mkdir -p /home/milan/data/wordpress; \
+		$(DOCKER_COMPOSE_CMD) -p $(NAME) -f $(DOCKER_COMPOSE_PATH) up --build -d; \
+	else \
+		echo "No .env file found in srcs folder, please create one before running make"; \
+	fi
+
+#
+stop:
+	$(DOCKER_COMPOSE_CMD) -p $(NAME) -f $(DOCKER_COMPOSE_PATH) stop
+
+down:
+	$(DOCKER_COMPOSE_CMD) -p $(NAME) -f $(DOCKER_COMPOSE_PATH) down -v
+
+restart: down all
+
+test:
+	docker run -it --rm alpine:3.21.2 sh
+
+.PHONY: test
