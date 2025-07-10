@@ -8,7 +8,7 @@ services:
     env_file:
       - .env
     build:
-      context: ./srcs/requirements/nginx
+      context: ./requirements/nginx
       dockerfile: Dockerfile
     ports:
       - "443:443"
@@ -25,7 +25,20 @@ services:
     networks:
       - inception
     build:
-      context: ./srcs/requirements/mariadb
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
+    restart: always
+  
+  wordpress:
+    container_name: wordpress
+    networks:
+      - inception
+    volumes:
+      - wordpress:/var/www/wordpress
+    env_file:
+      - .env
+    build:
+      context: ./requirements/wordpress
       dockerfile: Dockerfile
     restart: always
 
