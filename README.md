@@ -28,10 +28,6 @@ The architecture is based on several Docker containers, each isolating a specifi
      ```zsh
      make
      ```
-   - Or with the script:
-     ```zsh
-     ./build-run.sh
-     ```
 
 4. **Stop and clean up**
    ```zsh
