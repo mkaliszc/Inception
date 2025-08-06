@@ -40,7 +40,6 @@ The architecture is based on several Docker containers, each isolating a specifi
 
 - `srcs/docker-compose.yml`: Service and network definitions.
 - `srcs/requirements/`: Folders for each service with their Dockerfile and configuration.
-- `build-run.sh`: Script to build and launch containers.
 - `Makefile`: Simplified commands to build, launch, stop and clean up.
 
 ## Authors
